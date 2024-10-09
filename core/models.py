@@ -22,7 +22,7 @@ class Restaurant(models.Model):
     longitude = models.FloatField()
     restaurant_type = models.CharField(max_length=2,choices=Typechoices.choices)
 
-    def __init__(self):
+    def __str__(self):
         return self.name
     
 
