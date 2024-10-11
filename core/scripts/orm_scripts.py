@@ -3,7 +3,9 @@ from django.utils import timezone
 
 def run():
     restaurant = Restaurant.objects.first()
-    user = User.objects.first()
+    print(restaurant.name)
 
-    Rating.objects.create(user=user,restaurant = restaurant, rating = 3)
+    #restaurant.name = "THE ITALIAN PIZZA NAD PASTA"
+    #restaurant.save()
+
 
