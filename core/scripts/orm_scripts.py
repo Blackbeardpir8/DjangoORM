@@ -5,11 +5,6 @@ def run():
     user = User.objects.first()
     restaurant = Restaurant.objects.first()
 
-    print(Rating.objects.get_or_create(
-        restaurant = restaurant,
-        user = user,
-        rating =4
-    ))
-
+    Rating.objects.create(user = user, restaurant=restaurant , rating = 9)
 
 
