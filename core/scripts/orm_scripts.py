@@ -5,6 +5,8 @@ def run():
     user = User.objects.first()
     restaurant = Restaurant.objects.first()
 
-    Rating.objects.create(user = user, restaurant=restaurant , rating = 9)
+    rating=Rating(user = user, restaurant=restaurant , rating = 9)
 
+    rating.full_clean()
+    rating.save()
 
