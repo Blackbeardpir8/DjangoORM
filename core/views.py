@@ -1,14 +1,14 @@
 from django.shortcuts import render
-from core.forms import RatingForm
+from core.forms import RestaurantForm
 # Create your views here.
 
 def index(request):
     if request.method == 'POST':
-        form = RatingForm(request.POST or None)
+        form = RestaurantForm(request.POST or None)
         if form.is_valid():
-            form.save()
+            print(form.cleaned_data)
         else:
             return render(request, 'index.html', {'form':form})
         
-    context = {'form':RatingForm()}
+    context = {'form':RestaurantForm()}
     return render(request, 'index.html',context) 

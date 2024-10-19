@@ -2,8 +2,13 @@ from typing import Any
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator,MaxValueValidator
+from django.core.exceptions import ValidationError
 
 # Create your modmels here.
+
+def validate_restaurant_name(value):
+    if not value.startswith('a'):
+        raise ValidationError('Restaurant name must beging with "a"')
 class Restaurant(models.Model):
     class Typechoices(models.TextChoices):
 
@@ -16,11 +21,11 @@ class Restaurant(models.Model):
         OTHER = 'OT', 'Other'
 
 
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, validators=[validate_restaurant_name])
     website = models.URLField(default='')
     date_opened = models.DateField()
-    latitude = models.FloatField()
-    longitude = models.FloatField()
+    latitude = models.FloatField(validators=[MinValueValidator(-90),MaxValueValidator(90)])
+    longitude = models.FloatField(validators=[MinValueValidator(-180),MaxValueValidator(180)])
     restaurant_type = models.CharField(max_length=2,choices=Typechoices.choices)
 
     def __str__(self):

@@ -1,7 +1,7 @@
 from django import forms
-from core.models import Rating
+from core.models import Restaurant
 
-class RatingForm(forms.ModelForm):
+class RestaurantForm(forms.ModelForm):
     class Meta:
-        model = Rating
-        fields = ('restaurant', 'user', 'rating')
+        model = Restaurant
+        fields = ('name',)
