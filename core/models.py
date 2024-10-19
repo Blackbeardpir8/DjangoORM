@@ -1,7 +1,7 @@
 from typing import Any
 from django.db import models
 from django.contrib.auth.models import User
-from django.core.validators import MinLengthValidator,MaxLengthValidator
+from django.core.validators import MinValueValidator,MaxValueValidator
 
 # Create your modmels here.
 class Restaurant(models.Model):
@@ -31,7 +31,7 @@ class Rating(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     restaurant = models.ForeignKey(Restaurant,on_delete=models.CASCADE)
     rating = models.PositiveSmallIntegerField(
-        validators=[MinLengthValidator(1),MaxLengthValidator(5)]
+        validators=[MinValueValidator(1),MaxValueValidator(5)]
     )
 
     def __str__(self):
