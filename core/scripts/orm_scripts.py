@@ -1,8 +1,10 @@
-from core.models import Restaurant, Rating, User
+from core.models import Restaurant, Rating,Sale
 from django.utils import timezone
 
 def run():
-    Restaurant.objects.all().delete()
+    print(Restaurant.objects.count())
+    print(Rating.objects.count())
+    print(Sale.objects.count())
     
 
 

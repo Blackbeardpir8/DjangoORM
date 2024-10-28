@@ -10,7 +10,7 @@ def validate_restaurant_name(value):
     if not value.startswith('a'):
         raise ValidationError('Restaurant name must beging with "a"')
 class Restaurant(models.Model):
-    class Typechoices(models.TextChoices):
+    class TypeChoices(models.TextChoices):
 
         INDIAN = 'IN', 'Indian'
         CHINESE = 'CH', 'Chinese'
@@ -26,7 +26,7 @@ class Restaurant(models.Model):
     date_opened = models.DateField()
     latitude = models.FloatField(validators=[MinValueValidator(-90),MaxValueValidator(90)])
     longitude = models.FloatField(validators=[MinValueValidator(-180),MaxValueValidator(180)])
-    restaurant_type = models.CharField(max_length=2,choices=Typechoices.choices)
+    restaurant_type = models.CharField(max_length=2,choices=TypeChoices.choices)
 
     def __str__(self):
         return self.name
