@@ -3,7 +3,9 @@ from django.utils import timezone
 
 def run():
     chinese = Restaurant.TypeChoices.CHINESE
-    restaurants = Restaurant.objects.exclude(restaurant_type=chinese)
+    indian = Restaurant.TypeChoices.INDIAN
+    check_types = [chinese,indian]
+    restaurants = Restaurant.objects.exclude(restaurant_type__in = check_types)
     print(restaurants)
     
     
