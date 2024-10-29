@@ -2,8 +2,8 @@ from core.models import Restaurant, Rating,Sale
 from django.utils import timezone
 
 def run():
-    restaurants = Restaurant.objects.filter(name__gt = "E")
-    print(restaurants)
+    sales = Sale.objects.filter(income__range = (50,60))
+    print(sales)
     
     
 
