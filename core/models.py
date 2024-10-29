@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator,MaxValueValidator
 from django.core.exceptions import ValidationError
+from django.db.models.functions import Lower
 
 # Create your modmels here.
 
@@ -27,6 +28,9 @@ class Restaurant(models.Model):
     latitude = models.FloatField(validators=[MinValueValidator(-90),MaxValueValidator(90)])
     longitude = models.FloatField(validators=[MinValueValidator(-180),MaxValueValidator(180)])
     restaurant_type = models.CharField(max_length=2,choices=TypeChoices.choices)
+
+    class Meta:
+        ordering = [Lower('name'),'date_opened']
 
     def __str__(self):
         return self.name
