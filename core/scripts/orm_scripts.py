@@ -6,6 +6,7 @@ def run():
     sales = Sale.objects.filter(restaurant__restaurant_type=chinese)
     print(sales)
 
+
     
     
 
