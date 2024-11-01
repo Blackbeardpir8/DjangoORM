@@ -4,6 +4,6 @@ from core.models import Restaurant,Sale,Rating
 # Create your views here.
 
 def index(request):
-    restaurants = Restaurant.objects.filter(name__istartswith='c').prefetch_related('ratings', 'sales')
-    context = {'restaurants': restaurants}
+    ratings = Rating.objects.select_related('restaurant')
+    context = {'ratings':ratings}
     return render(request, 'index.html',context)    
