@@ -56,3 +56,6 @@ class Staff(models.Model):
     name = models.CharField(max_length=100)
     restaurants = models.ManyToManyField(Restaurant) 
 
+    def __str__(self) :
+        return self.name
+
