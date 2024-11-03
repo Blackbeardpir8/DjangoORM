@@ -1,11 +1,11 @@
-from core.models import Restaurant, Rating,Sale
+from core.models import Restaurant, Rating,Sale,Staff
 from django.utils import timezone
 from django.db.models.functions import Lower
 def run():
-    chinese = Restaurant.TypeChoices.CHINESE
-    sales = Sale.objects.filter(restaurant__restaurant_type=chinese)
-    print(sales)
-
+    staff , created = Staff.objects.get_or_create(name = "John Wick")
+    print(staff)
+    print(type(staff.restaurants))
+    print(staff.restaurants.all())
 
     
     
